@@ -15,6 +15,8 @@ cd /path/to/project
 chmod +x dist/6000d-runner
 ./dist/6000d-runner
 ## 2. 程序执行内容
+
+
 默认执行以下流程：
 1. 关闭 PCIe ACSCtl
 2. 检查系统、驱动、CUDA、Docker、Python、存储等环境信息
@@ -25,6 +27,8 @@ chmod +x dist/6000d-runner
 7. 运行 nccl-tests，测试 socket 内 / 跨 socket collective 通信
 8. 通过 Docker 运行 GEMM 算力测试
 ## 3. 常用运行参数
+
+
 跳过关闭 ACSCtl：
 ./6000d-runner --skip-acs
 跳过环境检查：
