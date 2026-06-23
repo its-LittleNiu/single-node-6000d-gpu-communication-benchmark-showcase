@@ -6,7 +6,7 @@
 
 进入 `6000d-runner` 所在目录：
 
-
+```bash
 cd /path/to/6000d-runner-dir
 chmod +x 6000d-runner
 ./6000d-runner
@@ -14,6 +14,7 @@ chmod +x 6000d-runner
 cd /path/to/project
 chmod +x dist/6000d-runner
 ./dist/6000d-runner
+```
 
 ## 2. 程序执行内容
 
@@ -46,6 +47,7 @@ chmod +x dist/6000d-runner
 
 -- 后面的参数会传给 GEMM 测试。
 示例：
+```bash
 ./6000d-runner -- \
   --dtype fp8 \
   --fp8-format e4m3 \
@@ -89,6 +91,7 @@ chmod +x dist/6000d-runner
   --iters 1000 \
   --rounds 20 \
   --threshold 70
+```
 
   
 ## 5. 输出文件
