@@ -116,7 +116,7 @@ gemm_benchmark/             GEMM 算力测试日志
 
 
 ## 6. 默认依赖路径
-
+```bash
 程序会自动搜索常见路径。建议按以下默认目录安装依赖。
 6.1 cuda-samples
 用于 P2P 测试：
@@ -142,10 +142,10 @@ alltoall_perf
 /root/nccl-tests/build/
 当前目录上级路径中的 nccl-tests/build/
 各用户 home 目录下的 nccl-tests/build/
-
+```
 
 ## 7. Docker 镜像要求
-
+```bash
 GEMM 测试默认使用 NVIDIA PyTorch 镜像：
 nvcr.io/nvidia/pytorch:25.05-py3
 运行前请确认镜像已经存在：
@@ -154,10 +154,10 @@ docker image inspect nvcr.io/nvidia/pytorch:25.05-py3
 docker pull nvcr.io/nvidia/pytorch:25.05-py3
 也可以指定其他镜像：
 IMAGE=nvcr.io/nvidia/pytorch:25.05-py3 ./6000d-runner
-
+```
 
 ## 8. 常用环境变量
-
+```bash
 指定 GEMM 测试的数据类型列表：
 DTYPE_LIST="bf16 fp16" ./6000d-runner
 指定 Docker 镜像：
@@ -168,10 +168,10 @@ NPROC_PER_NODE=8 ./6000d-runner
 MASTER_PORT=4201 ./6000d-runner
 指定结果目录：
 HOST_RESULT_ROOT=/data/6000d_result ./6000d-runner
-
+```
 
 ## 9. 推荐检查命令
-
+```bash
 运行前建议确认 GPU 状态：
 nvidia-smi
 确认 Docker 可用：
@@ -183,10 +183,10 @@ ls ~/nccl-tests/build/
 ls ~/nvbandwidth/build/nvbandwidth
 确认 cuda-samples：
 find ~/cuda-samples -name p2pBandwidthLatencyTest
-
+```
 
 ## 10. 示例完整命令
-
+```bash
 默认完整测试：
 ./6000d-runner
 跳过 GEMM，只做通信测试：
@@ -206,3 +206,4 @@ find ~/cuda-samples -name p2pBandwidthLatencyTest
   --threshold 70
 指定结果目录并跳过 ACSCtl：
 HOST_RESULT_ROOT=/data/6000d_result ./6000d-runner --skip-acs
+```
