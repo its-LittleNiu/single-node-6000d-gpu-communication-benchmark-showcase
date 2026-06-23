@@ -14,7 +14,7 @@ chmod +x 6000d-runner
 cd /path/to/project
 chmod +x dist/6000d-runner
 ./dist/6000d-runner
-2. 程序执行内容
+## 2. 程序执行内容
 默认执行以下流程：
 1. 关闭 PCIe ACSCtl
 2. 检查系统、驱动、CUDA、Docker、Python、存储等环境信息
@@ -24,7 +24,7 @@ chmod +x dist/6000d-runner
 6. 运行 nccl-tests，测试两两 GPU broadcast / all-reduce
 7. 运行 nccl-tests，测试 socket 内 / 跨 socket collective 通信
 8. 通过 Docker 运行 GEMM 算力测试
-3. 常用运行参数
+## 3. 常用运行参数
 跳过关闭 ACSCtl：
 ./6000d-runner --skip-acs
 跳过环境检查：
@@ -35,7 +35,7 @@ chmod +x dist/6000d-runner
 ./6000d-runner --continue-on-error
 设置每个测试步骤之间的等待时间，默认 2 秒：
 ./6000d-runner --sleep 5
-4. GEMM 参数传递
+## 4. GEMM 参数传递
 -- 后面的参数会传给 GEMM 测试。
 示例：
 ./6000d-runner -- \
@@ -81,7 +81,7 @@ chmod +x dist/6000d-runner
   --iters 1000 \
   --rounds 20 \
   --threshold 70
-5. 输出文件
+## 5. 输出文件
 总日志会生成在当前运行目录：
 run_all.log
 各测试结果默认生成在：
@@ -99,7 +99,7 @@ host_device_bandwidth/      Host to Device / Device to Host 带宽日志和 CSV 
 pairwise_collective/        两两 GPU broadcast / all-reduce 日志、矩阵和 CSV 汇总
 socket_collective/          socket 维度 collective 日志和 CSV 汇总
 gemm_benchmark/             GEMM 算力测试日志
-6. 默认依赖路径
+## 6. 默认依赖路径
 程序会自动搜索常见路径。建议按以下默认目录安装依赖。
 6.1 cuda-samples
 用于 P2P 测试：
@@ -125,7 +125,7 @@ alltoall_perf
 /root/nccl-tests/build/
 当前目录上级路径中的 nccl-tests/build/
 各用户 home 目录下的 nccl-tests/build/
-7. Docker 镜像要求
+## 7. Docker 镜像要求
 GEMM 测试默认使用 NVIDIA PyTorch 镜像：
 nvcr.io/nvidia/pytorch:25.05-py3
 运行前请确认镜像已经存在：
@@ -134,7 +134,7 @@ docker image inspect nvcr.io/nvidia/pytorch:25.05-py3
 docker pull nvcr.io/nvidia/pytorch:25.05-py3
 也可以指定其他镜像：
 IMAGE=nvcr.io/nvidia/pytorch:25.05-py3 ./6000d-runner
-8. 常用环境变量
+## 8. 常用环境变量
 指定 GEMM 测试的数据类型列表：
 DTYPE_LIST="bf16 fp16" ./6000d-runner
 指定 Docker 镜像：
@@ -145,7 +145,7 @@ NPROC_PER_NODE=8 ./6000d-runner
 MASTER_PORT=4201 ./6000d-runner
 指定结果目录：
 HOST_RESULT_ROOT=/data/6000d_result ./6000d-runner
-9. 推荐检查命令
+## 9. 推荐检查命令
 运行前建议确认 GPU 状态：
 nvidia-smi
 确认 Docker 可用：
@@ -157,7 +157,7 @@ ls ~/nccl-tests/build/
 ls ~/nvbandwidth/build/nvbandwidth
 确认 cuda-samples：
 find ~/cuda-samples -name p2pBandwidthLatencyTest
-10. 示例完整命令
+## 10. 示例完整命令
 默认完整测试：
 ./6000d-runner
 跳过 GEMM，只做通信测试：
