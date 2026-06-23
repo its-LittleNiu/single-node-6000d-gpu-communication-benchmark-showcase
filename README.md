@@ -14,6 +14,7 @@ chmod +x 6000d-runner
 cd /path/to/project
 chmod +x dist/6000d-runner
 ./dist/6000d-runner
+
 ## 2. 程序执行内容
 
 
